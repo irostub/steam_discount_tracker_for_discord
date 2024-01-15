@@ -23,4 +23,4 @@ ENV COLOR 15844367
 ENV CHECK_CYCLE 30
 ENV CURRENCY_SYMBOL "₩"
 
-CMD /app/steam_discount_tracker_for_discord '-webhook_url=$WEBHOOK_URL -color=$COLOR -check_cycle=$CHECK_CYCLE -currency_symbol=$CURRENCY_SYMBOL'
+CMD /app/steam_discount_tracker_for_discord -webhook_url=$WEBHOOK_URL -color=$COLOR -check_cycle=$CHECK_CYCLE -currency_symbol=$CURRENCY_SYMBOL
