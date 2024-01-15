@@ -25,4 +25,4 @@ ENV COLOR 15844367
 ENV CHECK_CYCLE 30
 ENV CURRENCY_SYMBOL "₩"
 
-ENTRYPOINT ["/app/steam_discound_tracker_for_discord_${RUN_TARGETOS}_${RUN_TARGETARCH}","-webhook_url=$WEBHOOK_URL","-color=$COLOR","-check_cycle=$CHECK_CYCLE","-currency_symbol=$CURRENCY_SYMBOL"]
+ENTRYPOINT exec /app/steam_discound_tracker_for_discord_$RUN_TARGETOS_$RUN_TARGETARCH","-webhook_url=$WEBHOOK_URL","-color=$COLOR","-check_cycle=$CHECK_CYCLE","-currency_symbol=$CURRENCY_SYMBOL
