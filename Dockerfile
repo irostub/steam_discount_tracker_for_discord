@@ -14,15 +14,13 @@ FROM --platform=${BUILDPLATFORM} golang:1.21-alpine
 
 ARG TARGETOS
 ARG TARGETARCH
-ENV RUN_TARGETOS=$TARGETOS
-ENV RUN_TARGETARCH=$TARGETARCH
 
 WORKDIR /app/
-COPY --from=builder /app/steam_discound_tracker_for_discord_${TARGETOS}_${TARGETARCH} /app/steam_discound_tracker_for_discord_${TARGETOS}_${TARGETARCH}
+COPY --from=builder /app/steam_discound_tracker_for_discord_${TARGETOS}_${TARGETARCH} /app/steam_discound_tracker_for_discord
 
 ENV WEBHOOK_URL ""
 ENV COLOR 15844367
 ENV CHECK_CYCLE 30
 ENV CURRENCY_SYMBOL "₩"
 
-ENTRYPOINT exec /app/steam_discound_tracker_for_discord_$RUN_TARGETOS_$RUN_TARGETARCH","-webhook_url=$WEBHOOK_URL","-color=$COLOR","-check_cycle=$CHECK_CYCLE","-currency_symbol=$CURRENCY_SYMBOL
+ENTRYPOINT ["/app/steam_discound_tracker_for_discord","-webhook_url=$WEBHOOK_URL","-color=$COLOR","-check_cycle=$CHECK_CYCLE","-currency_symbol=$CURRENCY_SYMBOL"]
