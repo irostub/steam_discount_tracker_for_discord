@@ -31,4 +31,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.IROSTUB_DOCKERHUB_TOKEN }}/steam_discount_tracker_for_discord:${{ steps.vars.outputs.tag }} , ${{ secrets.IROSTUB_DOCKERHUB_TOKEN }}/steam_discount_tracker_for_discord:latest
+          tags: ${{ secrets.IROSTUB_DOCKERHUB_USERNAME }}/steam_discount_tracker_for_discord:${{ steps.vars.outputs.tag }} , ${{ secrets.IROSTUB_DOCKERHUB_TOKEN }}/steam_discount_tracker_for_discord:latest
