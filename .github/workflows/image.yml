@@ -1,4 +1,4 @@
-name: ci
+name: Image
 
 on:
   push:
