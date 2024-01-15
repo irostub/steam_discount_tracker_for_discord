@@ -5,9 +5,8 @@ name: Go
 
 on:
   push:
-    branches: *
-  pull_request:
-    branches: *
+    tags:
+      - "*"
 
 jobs:
 
@@ -23,22 +22,6 @@ jobs:
       with:
         go-version: '1.21'
 
-#    - name: Build AMD64
-#      run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o linux_amd64_steam_discound_tracker_for_discord main.go
-#
-#    - name: Build ARM64
-#      run: CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-w -s" -o linux_arm64_steam_discound_tracker_for_discord main.go
-#    - name: Run GoReleaser
-#      uses: goreleaser/goreleaser-action@v5
-#      with:
-        # either 'goreleaser' (default) or 'goreleaser-pro'
-#        distribution: goreleaser
-#        version: latest
-#        args: release --clean
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
-        # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
     - name: Release Go binary
       uses: goreleaser/goreleaser-action@v5
       with:
