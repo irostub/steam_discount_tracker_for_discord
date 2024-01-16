@@ -23,6 +23,9 @@ var conf *config.Config
 func (cache Cache) updateAndSend() {
 	responseItems := cache.Client.Get().Specials.Items
 	for _, responseItem := range responseItems {
+		if responseItem.DiscountExpiration <= 0 {
+			continue
+		}
 		_, ok := cache.Items[responseItem.ID]
 		if !ok {
 			cache.Items[responseItem.ID] = responseItem

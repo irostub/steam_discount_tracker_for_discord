@@ -40,6 +40,9 @@ func SendWebhook(conf *config.Config, items []client.Items) {
 	colorCode := conf.Color
 	for _, item := range items {
 		tm := time.Unix(item.DiscountExpiration, 0)
+		if tm.Before(time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)) {
+			continue
+		}
 		embed := GameEmbed{
 			Title:       item.Name,
 			Description: " [-" + strconv.Itoa(item.DiscountPercent) + "%]" + strconv.FormatInt(item.FinalPrice/100, 10) + conf.CurrencySymbol + " ~~" + strconv.FormatInt(item.OriginalPrice/100, 10) + conf.CurrencySymbol + "~~ ",

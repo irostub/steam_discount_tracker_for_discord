@@ -83,5 +83,9 @@ func (client Client) Get() *Response {
 func (items Items) IsExpired() bool {
 	now := time.Now().Unix()
 	expirationTime := items.DiscountExpiration
+	standardTime := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	if items.DiscountExpiration <= 0 || standardTime.After(time.Unix(items.DiscountExpiration, 0)) {
+		return true
+	}
 	return now > expirationTime
 }
